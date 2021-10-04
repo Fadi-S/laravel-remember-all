@@ -41,8 +41,6 @@ class DatabaseUserProvider extends BaseUserProvider implements UserProvider
      */
     public function addRememberToken($identifier, $value, $expire)
     {
-        dd($_SERVER['HTTP_USER_AGENT']);
-
         $this->conn->table('remember_tokens')->insert([
             'token' => $value,
             'user_id' => $identifier,

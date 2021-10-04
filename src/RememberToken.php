@@ -17,7 +17,7 @@ class RememberToken extends Model
 
     public function getOSAttribute()
     {
-        $platform  = "Unknown OS Platform";
+        $platform  = "Unknown OS";
 
         $allOSes = [
             '/windows nt 10/i'      =>  'Windows 10',
@@ -46,6 +46,30 @@ class RememberToken extends Model
         ];
 
         foreach ($allOSes as $regex => $value)
+            if (preg_match($regex, $this->agent))
+                $platform = $value;
+
+        return $platform;
+    }
+
+    public function getBrowserAttribute()
+    {
+        $platform  = "Unknown Browser";
+
+        $allBrowsers = [
+            '/msie/i'      => 'Internet Explorer',
+            '/firefox/i'   => 'Firefox',
+            '/safari/i'    => 'Safari',
+            '/chrome/i'    => 'Chrome',
+            '/edge/i'      => 'Edge',
+            '/opera/i'     => 'Opera',
+            '/netscape/i'  => 'Netscape',
+            '/maxthon/i'   => 'Maxthon',
+            '/konqueror/i' => 'Konqueror',
+            '/mobile/i'    => 'Handheld Browser'
+        ];
+
+        foreach ($allBrowsers as $regex => $value)
             if (preg_match($regex, $this->agent))
                 $platform = $value;
 

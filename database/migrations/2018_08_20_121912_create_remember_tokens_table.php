@@ -17,6 +17,8 @@ class CreateRememberTokensTable extends Migration
             $table->increments('id');
             $table->string('token', 100);
             $table->integer('user_id');
+            $table->string('agent')->nullable();
+            $table->string('ip')->nullable();
             $table->timestamps();
             $table->dateTime('expires_at');
 

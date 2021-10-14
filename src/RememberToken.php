@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class RememberToken extends Model
 {
     protected $fillable = [
-        'token', 'user_id', 'expires_at', 'agent', 'ip'
+        'token', 'user_id', 'expires_at', 'agent', 'ip', 'session_id'
     ];
 
     public function user()

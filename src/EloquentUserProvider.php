@@ -46,6 +46,7 @@ class EloquentUserProvider extends BaseUserProvider implements UserProvider
                 'token' => $value,
                 'agent' => $_SERVER['HTTP_USER_AGENT'],
                 'ip' => $_SERVER['REMOTE_ADDR'],
+                'session_id' => session()->getId(),
                 'expires_at' => Carbon::now()->addMinutes($expire),
             ]);
         }
@@ -69,6 +70,7 @@ class EloquentUserProvider extends BaseUserProvider implements UserProvider
                 'token' => $newToken,
                 'agent' => $_SERVER['HTTP_USER_AGENT'],
                 'ip' => $_SERVER['REMOTE_ADDR'],
+                'session_id' => session()->getId(),
                 'expires_at' => Carbon::now()->addMinutes($expire),
             ]);
         }

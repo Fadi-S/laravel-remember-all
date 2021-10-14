@@ -46,6 +46,7 @@ class DatabaseUserProvider extends BaseUserProvider implements UserProvider
             'user_id' => $identifier,
             'agent' => $_SERVER['HTTP_USER_AGENT'],
             'ip' => $_SERVER['REMOTE_ADDR'],
+            'session_id' => session()->getId(),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
             'expires_at' => Carbon::now()->addMinutes($expire),
@@ -71,6 +72,7 @@ class DatabaseUserProvider extends BaseUserProvider implements UserProvider
                     'expires_at' => Carbon::now()->addMinutes($expire),
                     'agent' => $_SERVER['HTTP_USER_AGENT'],
                     'ip' => $_SERVER['REMOTE_ADDR'],
+                    'session_id' => session()->getId(),
                 ]);
     }
 
